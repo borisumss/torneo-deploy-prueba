@@ -86,6 +86,7 @@ DATABASES = {
 ########
 
 #### DEPLOY
+#'''
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -96,6 +97,7 @@ DATABASES = {
             'PORT': '6846',
         }
     }
+#'''
 ########
 
 # Password validation
