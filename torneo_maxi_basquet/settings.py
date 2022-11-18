@@ -74,14 +74,29 @@ WSGI_APPLICATION = 'torneo_maxi_basquet.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#### DESARROLLO
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
+########
 
+#### DEPLOY
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'railway',
+            'USER': 'root',
+            'PASSWORD': 'AJIUX6Rl1ZbGUv79v1YH',
+            'HOST': 'containers-us-west-124.railway.app',
+            'PORT': '6846',
+        }
+    }
+########
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
