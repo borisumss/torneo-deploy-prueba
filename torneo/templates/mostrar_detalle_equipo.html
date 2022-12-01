@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../static/css/mostrar_detalle_equipo.css">
+    <link rel="stylesheet" href="{% static 'css/mostrar_detalle_equipo.css' %}">
+    <!-- ICONO DE LA APLICACION -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/basketball.ico' %}">
 </head>
 
 <body>
@@ -110,7 +113,7 @@
                         <span class="d-block text-capitalize"><b>Nombre:</b> {{equipo.id_entrenador_equipo.nombre_entrenador}}</span>
                         <span class="d-block text-capitalize"><b>Apodo:</b> {{equipo.id_entrenador_equipo.apodo_entrenador}}</span>
                         <span class="d-block text-capitalize"><b>Nacionalidad: </b>{{equipo.id_entrenador_equipo.nacionalidad_entrenador}}</span>
-                        <span class="d-block text-capitalize"><b>Cumpleaños:</b> {{equipo.id_entrenador_equipo.nacimiento_entrenador}}</span>
+                        <span class="d-block text-capitalize"><b>F. Nac.:</b> {{equipo.id_entrenador_equipo.nacimiento_entrenador}}</span>
                     </div>
                 </div>
             
@@ -131,7 +134,7 @@
                                     <span class="d-block text-capitalize"><b>Nombre:</b> {{j.nombre_jugador}}</span>
                                     <span class="d-block text-capitalize"><b>Apodo:</b> {{j.apodo_jugador}}</span>
                                     <span class="d-block text-capitalize"><b>Posicion:</b> {{j.posicion_jugador}}</h>
-                                    <span class="d-block text-capitalize"><b>Cumpleaños:</b> {{j.nacimiento_jugador}}</h>
+                                    <span class="d-block text-capitalize"><b>F. Nac.:</b> {{j.nacimiento_jugador}}</h>
                                 </div>
                             </div>
                         

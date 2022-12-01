@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,9 @@
   <!-- iconos bootstrap 5 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- style.css -->
-  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- ICONO DE LA APLICACION -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/basketball.ico' %}">
 </head>
 
 <body>
@@ -53,10 +56,10 @@
   {% if messages %}
     {% for m in messages %}
       <script>
-        if('{{m}}'=='Solictud Enviada correctamente'){
+        if('{{m}}'=='Solicitud Enviada correctamente'){
           Swal.fire('{{m}}', '', 'success');
         }else{
-          Swal.fire('{{m}}', '', 'error');
+          Swal.fire('', '{{m}}', 'error');
         }
         
       </script>

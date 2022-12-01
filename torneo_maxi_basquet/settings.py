@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
+    #'whitenoise.runserver_nostatic',
     'torneo',
     'qr_code',
 ]
@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'torneo_maxi_basquet.urls'
@@ -74,31 +74,14 @@ WSGI_APPLICATION = 'torneo_maxi_basquet.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-#### DESARROLLO
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-'''
-########
 
-#### DEPLOY
-#'''
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'railway',
-            'USER': 'root',
-            'PASSWORD': 'AJIUX6Rl1ZbGUv79v1YH',
-            'HOST': 'containers-us-west-124.railway.app',
-            'PORT': '6846',
-        }
-    }
-#'''
-########
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -126,11 +109,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/La_Paz'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -143,7 +127,8 @@ STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 #### DEPLOY
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ### DESARROLLO
@@ -157,14 +142,19 @@ EMAIL_HOST_USER = 'dimelsa.soft@gmail.com'
 EMAIL_HOST_PASSWORD = 'iumdadaygfqwjibi'
 EMAIL_USE_TLS = True
 '''
+##########
 
 ### DEPLOY 
+#'''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dimelsa.softbolivia@gmail.com'
-EMAIL_HOST_PASSWORD = 'bgtbwempikmrhyhk'
+EMAIL_HOST_PASSWORD = 'htkmjljbjifxwbei'
 EMAIL_USE_TLS = True
+#'''
+######
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-0910.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-efd8.up.railway.app']
+

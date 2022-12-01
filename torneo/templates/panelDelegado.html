@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/static/index.css" />
+    <link rel="stylesheet" href="{% static 'index.css' %}"/>
     <!-- iconos bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
     <!--- MDBootstrap  -->
@@ -21,6 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+    <!-- ICONO DE LA APLICACION -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/basketball.ico' %}">
     {% block css %} {% endblock %}
 </head>
 
@@ -91,7 +93,12 @@
                     {% if messages %}
                     {% for m in messages %}
                     <script>
-                        Swal.fire('{{m}}', '', 'success');
+                        if ('{{m}}' == "Inscriba a su equipo primeramente"){
+                            Swal.fire('{{m}}', '', 'error');
+                        }else{
+
+                            Swal.fire('{{m}}', '', 'success');
+                        }
                     </script>
                     {% endfor %}
                     {% endif %}

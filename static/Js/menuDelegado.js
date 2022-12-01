@@ -71,8 +71,7 @@ $('#btn-infor').click(function () {
   $('.escudo').addClass('subirImagenes');
   $('.portada').addClass('subirImagenes');
   var billingItems = document.querySelectorAll('input');
-  var cate = document.querySelectorAll('select');
-  cate[0].disabled = false;
+  
   for (var i = 0; i < billingItems.length; i++) {
     billingItems[i].disabled = false;
   }
@@ -157,6 +156,7 @@ function validarFechas(fechaIni, fechaFin) {
   let boton = document.getElementById("btn-infor");
   let boton2 = document.getElementById("btn-jug");
   let boton3 = document.getElementById("btn-coach");
+  let boton4 = document.getElementById("btn-danger");
   if (boton != null) {
     if (hoy >= fechaRezIni && hoy <= fechaRezFin) {
         console.log("si se puede inscribir")
@@ -164,6 +164,7 @@ function validarFechas(fechaIni, fechaFin) {
       boton.style.display = 'none';
       boton2.style.display = 'none';
       boton3.style.display = 'none';
+      boton4.style.display = 'none';
     }
 
   }

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +21,9 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
   <!-- MDB -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../../static/css/registrarJugador.css">
+  <link rel="stylesheet" href="{% static 'css/registrarJugador.css' %}">
+  <!-- ICONO DE LA APLICACION -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/basketball.ico' %}">
 </head>
 
 <body class="body {% block body %}  {% endblock %}">
@@ -57,8 +60,16 @@
         <div class="col-12 secciones align-items-center justify-content-center">
             <article id="Tab2" class="container d-flex mx-auto justify-content-center align-items-center"> 
                 <div class="card" id="cont">
-                  <div class="card-header text-end">
-                    <a type="button" href="{% url 'delegacionEquipo' %}" class="btn-close" aria-label="Close"></a>
+                  <div class="card-header d-flex">
+                    
+                    <div class="text-start">
+                      <h5 >
+                        {{equipo.nombre_equipo}} - {{equipo.categoria_equipo}} ({{categoria.edad_minima}}-{{categoria.edad_maxima}})
+                    </h5>
+                    </div>
+                    <div class="text-end">
+                      <a type="button" href="{% url 'delegacionEquipo' %}" class="btn-close" aria-label="Close"></a>
+                    </div>
                   </div>
                     <div class="card-body">
                       <form class="needs-validation" id="formulario" name="formulario" method="POST" enctype="multipart/form-data" novalidate>
@@ -122,7 +133,7 @@
                             <div class="position-relative">
                               <label for="camiseta">N° de camiseta</label>
                               <input type="number" class="formJug" name="Nro_camiseta" id="camiseta" min="1" max="99" 
-                              placeholder="Ingrese número de camiseta" required>
+                              placeholder="Ingrese número de camiseta" onchange="validarDorsal('{{dorsales}}')" required>
                               <div class="invalid-tooltip">
                                 Valores desde 1-99
                               </div>
@@ -130,7 +141,7 @@
                             <br>
                             <div class="position-relative">
                               <label for="fechaNac">Fecha de nacimiento</label>
-                              <input type="date" class="formJug" name="Fecha_nac" id="fechaNac" onchange="fechaNacimiento()" required>
+                              <input type="date" class="formJug" name="Fecha_nac" id="fechaNac" onchange="fechaNacimiento('{{categoria.edad_minima}}','{{categoria.edad_maxima}}')" required>
                               <div class="invalid-tooltip">
                                 Llene este campo.
                               </div>
@@ -139,8 +150,8 @@
                           </div>
                           <div class="col-12 col-lg-6">
                             <div class="position-relative">
-                              <label for="documento">Documento</label>
-                              <input type="text" class="formJug" name="Documento" id="documento" placeholder="Ingrese número de documento" 
+                              <label for="documento">Documento Identidad</label>
+                              <input type="text" class="formJug" name="Documento" id="documento" onchange="validarCI('{{jugadores}}')" placeholder="Ingrese número de documento" 
                               pattern="^(?!\s)[0-9]{7,15}" required>
                               <div class="invalid-tooltip">
                                 Entre 7 y 15 caracteres
@@ -188,7 +199,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!--- MDBootstrap  -->
 
-<script type="text/javascript" src="../../../static/Js/registrarJugador.js"></script> 
+<script type="text/javascript" src="{% static 'Js/registrarJugador.js' %}"></script> 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
