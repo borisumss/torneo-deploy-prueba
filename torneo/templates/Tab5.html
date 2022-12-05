@@ -1,7 +1,7 @@
 
 {% extends "panelAdmin.html" %}
 
-<link rel="stylesheet" href="{% static 'css/panelAdmin.css' %}">
+{% block css %} <link rel="stylesheet" href="../../../static/css/panelAdmin.css"> {% endblock %}
 {% block body %}  fondoTab5 {% endblock %}
 {% block class4 %}  active {% endblock %}
 {% block contenido %}
@@ -215,4 +215,4 @@
 {% endblock %}
 
 
-{% block js %} <script type="text/javascript" src="{% static 'Js/menuAdmin.js' %}"></script> {% endblock %}
+{% block js %} <script type="text/javascript" src="../../../static/Js/menuAdmin.js"></script> {% endblock %}

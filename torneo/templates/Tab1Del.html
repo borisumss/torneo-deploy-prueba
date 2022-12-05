@@ -1,6 +1,6 @@
 {% extends "panelDelegado.html" %}
 
-<link rel="stylesheet" href="{% static 'css/panelDelegado.css' %}">
+{% block css %} <link rel="stylesheet" href="../../static/css/panelDelegado.css"> {% endblock %}
 {% block body %}  fondoTab1 {% endblock %}
 {% block class1 %}  active {% endblock %}
 {% block contenido %}
@@ -52,4 +52,4 @@
 {% endblock %}
 
 
-{% block js %} <script type="text/javascript" src="{% static 'Js/menuDelegado.js' %}"></script> {% endblock %}
+{% block js %} <script type="text/javascript" src="../../static/Js/menuDelegado.js"></script> {% endblock %}
