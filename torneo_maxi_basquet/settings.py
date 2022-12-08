@@ -173,13 +173,17 @@ EMAIL_USE_TLS = True
 #'''
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dimelsa.softbolivia@gmail.com'
-EMAIL_HOST_PASSWORD = 'htkmjljbjifxwbei'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '1d93c2eceff900'
+EMAIL_HOST_PASSWORD = 'c0222687d20629'
+EMAIL_PORT = '2525'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'dimelsa.softbolivia@gmail.com'
+#EMAIL_HOST_PASSWORD = 'htkmjljbjifxwbei'
 EMAIL_USE_TLS = True
 #'''
 ######
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-9206.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://torneomaxibasquet.up.railway.app']
 
