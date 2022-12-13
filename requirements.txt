@@ -83,13 +83,4 @@ wcwidth==0.2.5
 webencodings==0.5.1
 whitenoise==6.2.0
 xhtml2pdf==0.2.8
-mysqlclient==2.1.1
-asgiref==3.5.2
-cffi==1.15.1
-
-
-
-#mysqlclient==2.1.1
-
-
 PyMySQL==1.0.2

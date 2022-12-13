@@ -682,24 +682,24 @@ def delegadosAlta(request, tipo, id):
             return redirect('login')
 
 
-def administracionEquipos(request):
-    if request.method == 'GET':
-        if not request.user.is_anonymous:
-            if not request.user.email.endswith('@admin.com'):
-                return redirect('login')
-            else:
-                torneo_actual = get_object_or_404(
-                    Torneo, torneo_estado=1)  # peligroso
-                categorias = Categorias_Torneo.objects.filter(
-                    id_torneo=torneo_actual.pk)
-                equipos = Equipo.objects.filter(
-                    estado_inscripcion_equipo="INSCRITO", id_torneo=torneo_actual.pk)
-                return render(request, 'Tab4.html', {
-                    'equipos': equipos,
-                    'categorias': categorias,
-                })
-        else:
-            return redirect('login')
+# def administracionEquipos(request):
+#     if request.method == 'GET':
+#         if not request.user.is_anonymous:
+#             if not request.user.email.endswith('@admin.com'):
+#                 return redirect('login')
+#             else:
+#                 torneo_actual = get_object_or_404(
+#                     Torneo, torneo_estado=1)  # peligroso
+#                 categorias = Categorias_Torneo.objects.filter(
+#                     id_torneo=torneo_actual.pk)
+#                 equipos = Equipo.objects.filter(
+#                     estado_inscripcion_equipo="INSCRITO", id_torneo=torneo_actual.pk)
+#                 return render(request, 'Tab4.html', {
+#                     'equipos': equipos,
+#                     'categorias': categorias,
+#                 })
+#         else:
+#             return redirect('login')
 
 
 def verEquipo(request, idequipo):
@@ -750,6 +750,70 @@ def delegacionTorneo(request):
         else:
             return redirect('login')
 
+'''
+def delegacionEquipo(request):
+    if request.method == 'GET':
+        if not request.user.is_anonymous:
+            if not request.user.email.endswith('@delegacion.com'):
+                return redirect('login')
+            else:
+                equipo = Equipo.objects.filter(id_delegado=request.user.id)
+                todos = Equipo.objects.all()
+                aux = ''
+                for i in todos:
+                    if i != equipo[0]:
+                        if i.nombre_equipo is not None:
+                            aux = aux + i.nombre_equipo + "-"
+
+                cate = Categorias_Torneo.objects.filter(
+                    id_torneo=equipo[0].id_torneo)
+                fechas = Inscripcion.objects.filter(
+                    id_torneo=equipo[0].id_torneo)
+                jugadores = Jugador.objects.filter(id_equipo=equipo[0])
+                
+                return render(request, 'Tab2Del.html', {
+                    'equipo': equipo[0],
+                    'categorias': cate,
+                    'jugadores': jugadores,
+                    'fechas': fechas.first(),
+                    'equiposTodos': aux
+                })
+        else:
+            return redirect('login')
+    elif request.method == 'POST':
+        print(request.POST)
+        print(request.FILES)
+        #portada ="static/imagenes/equipos/portadas/" + str(request.FILES.get('portada_equipo'))
+        #escudo = "static/imagenes/equipos/escudos/"+ str( request.FILES.get('escudo_equipo'))
+        portada = request.FILES.get('portada_equipo')
+        escudo = request.FILES.get('escudo_equipo')
+
+        nombre = request.POST.get('nombre_equipo')
+        pais = request.POST.get('pais_equipo')
+        ciudad = request.POST.get('ciudad_equipo')
+        categoria = request.POST.get('categoria_equipo')
+
+        """ equipo = Equipo.objects.filter(id_delegado=request.user.id)
+        estado = 'INSCRITO'
+    
+        equipo.update(pais_origen = pais, ciudad_origen= ciudad, nombre_equipo = nombre, categoria_equipo=categoria, estado_inscripcion_equipo=estado)
+        """
+        equipo = Equipo.objects.get(id_delegado=request.user.id)
+        print(equipo)
+        form = EquipoForm(request.POST or None, request.FILES or None, instance=equipo)
+        print("*************"*4)
+        print(form)
+        print(form.is_valid())
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Información registrada correctamente")
+
+        else:
+            messages.error(request, "Algo salio mal, intente nuevamente")
+
+        return redirect('delegacionEquipo')
+
+'''
 
 def delegacionEquipo(request):
     if request.method == 'GET':
@@ -813,7 +877,6 @@ def delegacionEquipo(request):
 
         return redirect('delegacionEquipo')
 
-
 def delegacionCredenciales(request):
     if request.method == 'GET':
         if not request.user.is_anonymous:
@@ -827,14 +890,14 @@ def delegacionCredenciales(request):
                     return redirect('delegacionEquipo')
                 else:
                     jugadores = Jugador.objects.filter(id_equipo=equipo.pk)
-                    entrenador = Entrenador.objects.get(
+                    entrenador = Entrenador.objects.filter(
                         id=equipo.id_entrenador_equipo.pk)
                     delegado = Delegado.objects.get(
                         id_delegado=equipo.id_delegado.pk)
 
                     return render(request, 'Tab3Del.html', {
                         'jugadores': jugadores,
-                        'entrenador': entrenador,
+                        'entrenador': entrenador.first(),
                         'delegado': delegado,
                     })
         else:
